@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="100" fill="#0b1021"/>
+  <path d="M120 280 L240 80 L220 220 L360 100 L280 320 L300 200 Z"
+        fill="none" stroke="#63fff2" stroke-width="20"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="50%" y="90%" text-anchor="middle" font-size="48"
+        font-family="sans-serif" fill="#ff2bd6">LZ</text>
+</svg>
