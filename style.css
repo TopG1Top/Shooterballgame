@@ -1,0 +1,51 @@
+:root{
+  --bg:#090f1f; --bg2:#0b122b; --fg:#e7f1ff; --muted:#8aa0bf;
+  --pri:#63fff2; --acc:#ff2bd6; --gold:#ffd166; --danger:#ff5a7a; --ok:#7efc7a;
+}
+@keyframes bgshift{ 0%{background-position:0 0} 100%{background-position:200% 200%} }
+html,body{height:100%;margin:0;color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;overflow:hidden}
+body{background:radial-gradient(1200px 800px at 60% 60%, var(--bg2), var(--bg)),
+      conic-gradient(from 180deg at 50% 50%, rgba(99,255,242,.06), rgba(255,43,214,.06), rgba(255,209,102,.06), rgba(99,255,242,.06));
+      background-size:cover, 400% 400%; animation:bgshift 22s linear infinite}
+#wrap{position:fixed;inset:0}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block;transition:filter .2s ease}
+.hud{position:absolute;inset:0;pointer-events:none}
+.top{display:flex;justify-content:space-between;gap:12px;padding:14px 18px}
+.pill{pointer-events:auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:8px 12px;border-radius:999px;
+  backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.35);user-select:none}
+.pill b{color:var(--pri)}
+.hearts{display:flex;gap:6px}
+.heart{width:18px;height:18px;border-radius:6px;background:linear-gradient(180deg, rgba(255,90,122,.9), rgba(255,90,122,.55));
+  border:1px solid rgba(255,90,122,.6);box-shadow:0 0 12px rgba(255,90,122,.35), inset 0 0 8px rgba(255,90,122,.55)}
+.btn{pointer-events:auto;border:1px solid rgba(255,255,255,.18);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  padding:12px 16px;border-radius:14px;cursor:pointer;transition:.12s transform,.2s background, box-shadow .2s;box-shadow:0 8px 24px rgba(0,0,0,.35);
+  font-weight:800;color:var(--fg);letter-spacing:.3px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(0,0,0,.45)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.select{padding:8px 10px}
+.center{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.card{pointer-events:auto;width:min(720px,92vw);background:rgba(10,12,24,.82);border:1px solid rgba(255,255,255,.12);border-radius:20px;
+  box-shadow:0 26px 96px rgba(0,0,0,.55), inset 0 0 80px rgba(99,255,242,.06);padding:22px;backdrop-filter:blur(8px);transform:translateY(8px);opacity:0;animation:cardin .3s ease forwards}
+@keyframes cardin{to{opacity:1;transform:translateY(0)}}
+.brand{display:flex;gap:10px;align-items:center;font-weight:900;letter-spacing:.4px}
+.brand .dot{width:10px;height:10px;border-radius:999px;background:var(--acc);box-shadow:0 0 14px var(--acc)}
+.title{font-weight:900;font-size:clamp(32px,4.2vw,52px);letter-spacing:.4px;margin:6px 0 4px;text-shadow:0 0 18px rgba(99,255,242,.28)}
+.subtitle{color:var(--muted);margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:14px}
+.kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);padding:3px 6px;border-radius:6px}
+.settings{display:flex;gap:10px;flex-wrap:wrap}
+.switch{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,.05);border-radius:12px;border:1px solid rgba(255,255,255,.14)}
+.mobileTip{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;padding:8px 12px;display:none}
+.banner{position:absolute;left:50%;top:16%;transform:translateX(-50%);padding:10px 16px;border-radius:12px;background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);font-weight:800;animation:banner .6s ease}
+@keyframes banner{from{transform:translate(-50%,-12px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.test { position:absolute; left:50%; transform:translateX(-50%); bottom:16px; pointer-events:none; opacity:.85 }
+.hidden{display:none!important}
+.credit{position:absolute; right:14px; bottom:10px; opacity:.8; font-size:12px; pointer-events:none}
+
+/* Pausen-Optik */
+body.paused canvas { filter: blur(1.2px) brightness(.88) saturate(1.1); }
+.card.pop{animation-delay:.08s}
+.how{margin:0 0 8px 18px;line-height:1.6}

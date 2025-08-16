@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ULTRAKRASS ⚡ Brutal Neon Arena — von Linhard Zejneli</title>
+  <meta name="description" content="Brutaler HTML5-Canvas-Shooter mit Neon-Design, Animationen, Kampagne, Endless, Bossfights, Perks, Drohnen, Rage & Laser-Ult. 0 Dependencies." />
+  <meta name="theme-color" content="#0b1021" />
+  <meta name="author" content="Linhard Zejneli" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="paused">
+  <div id="wrap">
+    <canvas id="game"></canvas>
+    <div class="hud">
+      <div class="top">
+        <div class="pill" id="score">Score: <b>0</b> · Combo <b>x1</b> · Level <b id="level">1-1</b></div>
+        <div class="pill hearts" id="lives"></div>
+        <div class="pill" id="fps">FPS: <b>0</b></div>
+        <button class="btn" id="pauseBtn" aria-label="Pause/Resume">▶ Start</button>
+      </div>
+
+      <!-- Main Menu -->
+      <div class="center" id="menu">
+        <div class="card pop">
+          <div class="brand"><span class="dot"></span> ULTRAKRASS ⚡ <small>— von Linhard Zejneli</small></div>
+          <div class="title">Brutal Neon Arena</div>
+          <p class="subtitle">Kampagne (5 Stages + Boss) oder Endless. Wähle deinen Schwierigkeitsgrad, sammle Perks, aktiviere <b>Rage</b> & zünde die <b>Laser-Ult</b>.</p>
+          <div class="grid" style="margin-bottom:8px">
+            <button class="btn" id="campaignBtn">🎯 Kampagne</button>
+            <button class="btn" id="endlessBtn">♾️ Endless</button>
+            <button class="btn" id="howBtn">❓ How to Play</button>
+            <button class="btn" id="resetBtn">🗑️ Local Scores</button>
+          </div>
+          <div class="settings">
+            <label class="switch"><span>Schwierigkeit</span>
+              <select id="difficulty" class="btn select">
+                <option value="easy">Easy 😎</option>
+                <option value="normal" selected>Normal 💀</option>
+                <option value="hard">Hard 🔥</option>
+              </select>
+            </label>
+            <label class="switch"><input type="checkbox" id="aimAssist" checked> Aim-Assist</label>
+            <label class="switch"><input type="checkbox" id="screenShake" checked> Screen-Shake</label>
+            <label class="switch"><input type="checkbox" id="sfx" checked> SFX an</label>
+            <label class="switch"><input type="checkbox" id="lowFx"> Low FX</label>
+          </div>
+          <div class="footer">
+            <div>WASD/←→↑↓, Maus zielen, <span class="kbd">L-Klick</span> schießen, <span class="kbd">R-Klick</span> Laser-Ult, <span class="kbd">Shift</span> Dash, <span class="kbd">Space</span> Slow-Mo, <span class="kbd">E</span> Rage, <span class="kbd">P</span> Pause</div>
+            <div>MIT-Lizenz · 0 Deps · © Linhard Zejneli</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How To -->
+      <div class="center hidden" id="how">
+        <div class="card">
+          <div class="title">How to Play</div>
+          <ul class="how">
+            <li><b>Kampagne:</b> 5 Stages, am Ende Boss. Nach jeder Stage wählst du 1 von 3 <b>Perks</b>.</li>
+            <li><b>Endless:</b> Unendliche Wellen. Je länger du überlebst, desto krasser.</li>
+            <li><b>Perks:</b> Extra Leben, Schnellfeuer, Drohnen, Damage, Magnet etc.</li>
+            <li><b>Rage (E):</b> Bei Combo ≥ 15: Triple-Shot + Speed + kleiner Heal für 6s.</li>
+            <li><b>Laser-Ult (R-Klick halten):</b> Durchschlagender Strahl. Verbraucht Energie, lädt sich auf.</li>
+          </ul>
+          <div class="grid">
+            <button class="btn" id="backBtn">⬅ Zurück</button>
+            <button class="btn" id="playNow">▶ Kampagne starten</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Over / Win -->
+      <div class="center hidden" id="gameover">
+        <div class="card">
+          <div class="title" id="overTitle">Game Over</div>
+          <p class="subtitle" id="finalStats">Stats…</p>
+          <div class="grid">
+            <button class="btn" id="againBtn">🔁 Nochmal</button>
+            <button class="btn" id="menuBtn">🏠 Menü</button>
+          </div>
+          <div class="footer">
+            <div id="bestScore">Highscore: 0</div>
+            <div><button class="btn" id="shareBtn">🔗 Score teilen</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Perk Draft -->
+      <div class="center hidden" id="perkDraft">
+        <div class="card">
+          <div class="title">Perk wählen</div>
+          <p class="subtitle">Wähle <b>einen</b> Bonus für die nächste Stage.</p>
+          <div class="grid" id="perkChoices"></div>
+        </div>
+      </div>
+
+      <div class="mobileTip" id="mobileTip">Touch: Linke Hälfte bewegen · Rechte Hälfte schießen</div>
+      <div class="banner hidden" id="stageBanner">Stage 1-1</div>
+      <div class="pill test" id="testStatus">Self-tests: running…</div>
+      <div class="credit">von Linhard Zejneli</div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
